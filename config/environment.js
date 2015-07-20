@@ -6,6 +6,12 @@ module.exports = function(environment) {
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
+    contentSecurityPolicy: {
+      'default-src': "'none'",
+      'script-src': "'self' 'unsafe-inline' 'unsafe-eval'   maps.googleapis.com maps.gstatic.com",
+      'font-src': "'self' data: fonts.gstatic.com"
+      
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -19,6 +25,13 @@ module.exports = function(environment) {
     }
   };
 
+  ENV.contentSecurityPolicy = {
+    'script-src': "'self' 'unsafe-eval' https://*.googleapis.com https://*.gstatic.com  data:",
+    'img-src': "'self' https://*.googleapis.com https://*.gstatic.com data:",
+    'font-src': "'self' https://*.gstatic.com  data:",
+    'style-src': "'self' 'unsafe-inline' https://*.googleapis.com  data:"
+  };
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
@@ -26,6 +39,10 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
   }
+
+  ENV.googleMap = {
+    // your configuration goes here
+  };
 
   if (environment === 'test') {
     // Testem prefers this...
